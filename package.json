@@ -1,35 +1,44 @@
 {
-  "name": "simple-mern-passport",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.20.0",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.2",
-    "connect-mongo": "^2.0.1",
-    "express": "^4.16.2",
-    "express-session": "^1.15.6",
-    "mongoose": "^5.10.5",
-    "morgan": "^1.10.0",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.0",
-    "spectre.css": "^0.5.0"
-  },
+  "name": "react-auth",
+  "version": "1.0.0",
+  "description": "react app with passport auth",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "api": "nodemon ./server/server.js",
-    "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\""
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evanejtucker/react-auth.git"
+  },
+  "keywords": [],
+  "author": "Evan E J Tucker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evanejtucker/react-auth/issues"
+  },
+  "homepage": "https://github.com/evanejtucker/react-auth#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcrypt": "^3.0.8",
+    "connect-flash": "^0.1.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.10.8",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
-    "concurrently": "^3.5.1",
-    "nodemon": "^1.17.5"
-  },
-  "proxy": "http://localhost:8080"
+    "colors": "^1.4.0",
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.4"
+  }
 }
