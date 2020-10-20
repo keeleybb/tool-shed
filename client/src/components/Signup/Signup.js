@@ -6,9 +6,10 @@ class Signup extends Component {
     state = {
         validUsername: false,
         validPassword: false,
-        confirmPassword: false
+        confirmPassword: false,
+        city: true
     }
-    
+
     componentDidUpdate() {
         this.validatePassword();
         this.confirmPassword();
@@ -61,13 +62,17 @@ class Signup extends Component {
             <div>
                 <h2 className="loginTitle title-font">Signup</h2>
                 <hr />
-                {this.props.message?(
+                {this.props.message ? (
                     <Alert className="animated fadeIn" color="danger">{this.props.message}</Alert>
-                ): (<></>)}
+                ) : (<></>)}
                 <Form>
                     <FormGroup>
                         <Label for="username">Username</Label>
                         <Input type="text" name="username" id="username" placeholder="username" value={this.props.username} onChange={this.props.handleInputChange} valid={this.state.validUsername} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="city">City</Label>
+                        <Input type="text" name="city" id="city" placeholder="city" value={this.props.city} onChange={this.props.handleInputChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="password">Password</Label>
@@ -82,8 +87,8 @@ class Signup extends Component {
                     {(this.state.validUsername && this.state.validPassword && this.state.confirmPassword) ? (
                         <Button onClick={this.props.handleSignup} color="success" block>Signup</Button>
                     ) : (
-                        <Button onClick={this.props.handleSignup} color="danger" block disabled>Signup</Button>
-                    )}
+                            <Button onClick={this.props.handleSignup} color="danger" block disabled>Signup</Button>
+                        )}
                     <p className="signupLink">
                         <Link to="/login">already have an account?  Sign in here</Link>
                     </p>

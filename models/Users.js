@@ -19,6 +19,9 @@ const usersSchema = new Schema({
     // },
     // required: [true, "password is required"],
   },
+  city: {
+    type: String
+  },
   email: {
     type: String,
     // required: true,
@@ -33,7 +36,7 @@ const usersSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-  goals: [
+  listings: [
     {
       type: Schema.Types.ObjectId,
       ref: "Goals",

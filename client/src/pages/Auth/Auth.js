@@ -11,6 +11,7 @@ class Auth extends Component {
     username: "",
     password: "",
     confirmPassword: "",
+    city: "",
     user: null,
     message: ""
   }
@@ -21,10 +22,12 @@ class Auth extends Component {
     this.setState({
       [name]: value
     });
+    console.log("city " + this.state.city)
   };
 
   handleLogin = event => {
     event.preventDefault();
+    console.log("city" + this.state.city)
     if (this.state.username && this.state.password) {
       API.login({
         username: this.state.username,
@@ -50,10 +53,12 @@ class Auth extends Component {
 
   handleSignup = event => {
     event.preventDefault();
+    console.log("city " + this.state.city)
     if (this.state.username && this.state.password) {
       API.signup({
         username: this.state.username,
-        password: this.state.password
+        password: this.state.password,
+        city: this.state.city
       }).then(user => {
         if (user.data.loggedIn) {
           this.setState({
